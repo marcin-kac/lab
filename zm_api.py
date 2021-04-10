@@ -98,18 +98,20 @@ def main():
     	if page_Count == 1:
     		events = response["events"]
     		for event in events:
-    			ID = event['Event']["Id"]
-    			time = event['Event']["StartTime"]
-    			print('{} {}'.format(ID,time))
+                        ID = event['Event']["Id"]
+                        time = event['Event']["StartTime"]
+                        frame = event['Event']["Frames"]
+                        print('{} {} {}'.format(ID,time,frame))
     	elif page_Count > 1:
     		for i in range(1,page_Count):
     			url = 'events.json?page={}'.format(i)
     			response = query_api(url,time_stamp,cookie)
     			events = response["events"]
     			for event in events:
-    				ID = event['Event']["Id"]
-    				time = event['Event']["StartTime"]
-    				print('{} {}'.format(ID,time))
+                                ID = event['Event']["Id"]
+                                time = event['Event']["StartTime"]
+                                frame = event['Event']['Frames']
+                                print('{} {} {}'.format(ID,time,frame))
     else:
         print("No options given. Use -h for help.")
 if __name__ == "__main__":
